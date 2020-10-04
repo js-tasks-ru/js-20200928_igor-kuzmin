@@ -14,11 +14,5 @@ export function sortStrings(arr, param = 'asc') {
 }
 
 function compareStrings(str1, str2) {
-  // если без учета регистра строки совпадают, то возвращаем инвертированный результат сравнения,
-  // чтобы слово в верхнем регистре оказалось первым
-  if (str1.toUpperCase().localeCompare(str2.toUpperCase()) === 0) {
-    return str2.localeCompare(str1);
-  } else {
-    return str1.localeCompare(str2);
-  }
+  return str1.localeCompare(str2, ['ru', 'en'], {caseFirst: 'upper'});
 }
