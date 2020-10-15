@@ -13,13 +13,11 @@ export default class ColumnChart {
     this.label = label;
     this.value = value;
     this.link = link;
-
     this.render();
   }
 
   getColumnBody(data) {
     const maxValue = Math.max(...data);
-
     return data
       .map(item => {
         const scale = this.chartHeight / maxValue;
@@ -55,10 +53,8 @@ export default class ColumnChart {
 
   render() {
     const element = document.createElement('div');
-
     element.innerHTML = this.getElement;
     this.element = element.firstElementChild;
-
     if (this.data.length > 0) {
       this.element.classList.remove('column-chart_loading');
     }
@@ -68,10 +64,8 @@ export default class ColumnChart {
 
   getSubElements(element) {
     const elements = element.querySelectorAll('[data-element]');
-
     return [...elements].reduce((accum, subElement) => {
       accum[subElement.dataset.element] = subElement;
-
       return accum;
     }, {});
   }
