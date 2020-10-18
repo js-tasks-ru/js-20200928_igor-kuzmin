@@ -1,7 +1,10 @@
 export default class NotificationMessage {
-  element;
+  static oldElement;
 
   constructor(inputText = '', {duration = 0, type = 'success'} = {}) {
+    if (NotificationMessage.oldElement) {
+      NotificationMessage.oldElement.remove();
+    }
     this.inputText = inputText;
     this.duration = duration;
     this.type = type;
@@ -24,6 +27,7 @@ export default class NotificationMessage {
     const element = document.createElement('div');
     element.innerHTML = this.getElement();
     this.element = element.firstElementChild;
+    NotificationMessage.oldElement = this.element;
   }
 
   show(elem = document.body) {

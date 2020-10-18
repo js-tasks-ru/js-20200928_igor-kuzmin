@@ -22,7 +22,6 @@ export default class ColumnChart {
       .map(item => {
         const scale = this.chartHeight / maxValue;
         const percent = (item / maxValue * 100).toFixed(0);
-
         return `<div style="--value: ${Math.floor(item * scale)}" data-tooltip="${percent}%"></div>`;
       })
       .join('');
@@ -55,10 +54,9 @@ export default class ColumnChart {
     const element = document.createElement('div');
     element.innerHTML = this.getElement;
     this.element = element.firstElementChild;
-    if (this.data.length > 0) {
+    if (this.data.length) {
       this.element.classList.remove('column-chart_loading');
     }
-
     this.subElements = this.getSubElements(this.element);
   }
 
@@ -74,7 +72,7 @@ export default class ColumnChart {
     this.subElements.body.innerHTML = this.getColumnBody(bodyData);
   }
 
-  remove () {
+  remove() {
     this.element.remove();
   }
 
