@@ -95,7 +95,6 @@ export default class SortableTable {
   }
 
   headerColumnClick = event => {
-    console.log(this);
     const column = event.target.closest('[data-sortable="true"]');
     const toggleOrder = order => {
       const orders = {
